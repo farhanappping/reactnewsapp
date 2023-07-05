@@ -7,6 +7,19 @@
   pointer-events: none;
 }
 
+.card-body{
+  background-color: white;
+  color: darkcyan;
+}
+
+.text-muted{
+font-weight: bold;
+}
+
+body{
+  background-color: #fbeec1;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
