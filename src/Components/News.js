@@ -27,9 +27,7 @@ const News = (props) => {
     props.setProgress(100);
   };
 
-  useEffect(() => {
-    updateNews();
-  }, []);
+  
 
   const fetchMoreData = async () => {
     let url = `https://newsapi.org/v2/top-headlines?country=${
@@ -44,13 +42,16 @@ const News = (props) => {
     setArticles(articles.concat(parsedData.articles));
     setTotalResults(parsedData.totalResults);
   };
-
+  useEffect(() => {
+    updateNews();
+  }, []);
   return (
     <>
       <h1 style={{ color: "black", marginTop: "90px" }} className="text-center">
         NewsMonkey - {capitalise(props.category)}
       </h1>
       {loading && <Spinner />}
+      {articles && articles.length > 0 && (
       <InfiniteScroll
         dataLength={articles.length}
         next={fetchMoreData}
@@ -73,10 +74,12 @@ const News = (props) => {
                   />
                 </div>
               );
+              
             })}
           </div>
         </div>
       </InfiniteScroll>
+      )}
     </>
   );
 };
